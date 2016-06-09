@@ -27,7 +27,7 @@ end
 
 def action_delete(contacts)
    puts
-   response = ask "Delete which contact? "
+   response = ask "Delete which contact?"
 
    i = response.to_i
 
@@ -37,6 +37,18 @@ def action_delete(contacts)
    contacts.delete_at(i-1)
 
    puts
+end
+
+def action_error
+   puts
+   puts "Sorry, I don't recognize that command."
+   puts
+end
+
+def contact_exists?(contacts, response)
+  return false unless response =~ /[0-9]+/
+  i = response.to_i
+  !contacts[i-1].nil?
 end
 
 def show(contact)
@@ -84,7 +96,15 @@ loop do
       action_new(contacts)
    elsif response == "d"
       action_delete(contacts)
-   else
-      action_show(contacts, response.to_i)
+    elsif response =~ /[0-9]+/
+      if contact_exists?(contacts, response)
+        action_show( contacts, response.to_i )
+      else
+        puts
+        puts "That contact does not exist!"
+        puts
+      end
+    else
+      action_error
    end
 end
