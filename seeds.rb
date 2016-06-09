@@ -8,4 +8,4 @@ contacts << { name: "Nikola Tesla"    , phone: "+385 43 987 3355", email: "nik@i
 contacts << { name: "Genghis Khan"    , phone: "+976 2 194 2222" , email: "contact@empire.com" }
 contacts << { name: "Malcom X"        , phone: "+1 310 155 8822" , email: "x@theroost.org"     }
 
-write_contacts(contacts)
+write_contacts( contacts )
